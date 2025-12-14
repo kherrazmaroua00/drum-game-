@@ -6,18 +6,21 @@ var btn=document.querySelectorAll(".drum ");
 
  //USING FOR LOOP TO ADD EVENTLISTNER TO EACH BUTTON drum
 for (var i=0;i<btn.length;i++){
-  btn[i].addEventListener("click",handelClick); 
+  btn[i].addEventListener("click",handelClick);
+  
 }
 
 //FUNCTION OF THE KEY PRESS TO READ THE KEY THAT IS PRESSED
 function hadlekeypress(event){
-key(event.key);   
+key(event.key); 
+ActiveBtn(event.key)  
 }
 
 //FUNCTION OF THE CLICK TO KNOW WICH BUTTON GOT CLICKED
 function handelClick(){
   var btn =this.innerHTML;
   key(btn);
+  ActiveBtn(btn) 
 }
 
 //A GENERAL FUNCTION THAT HOLD THE SWITCH OF THE KEYS AND THE CLICKES 
@@ -59,4 +62,12 @@ function key(key){
     break;
  }
 
+}
+function ActiveBtn(key){
+var acbtn = document.querySelector("."+key);
+acbtn.classList.add("pressed");
+setTimeout(function(){
+  acbtn.classList.remove("pressed");
+} ,100
+)
 }
